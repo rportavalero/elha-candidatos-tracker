@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidatos Brand Manager Italia Elha</title>
+<style>
+  :root{color-scheme:light}*{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f4f0;color:#1a1a1a;min-height:100vh;padding:28px 24px 60px}
+  .header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;gap:16px;flex-wrap:wrap}
+  .header-left h1{font-size:21px;font-weight:700;color:#111;letter-spacing:-.3px}
+  .header-left p{font-size:12px;color:#888;margin-top:4px}
+  .header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .badge-tf{display:inline-flex;align-items:center;gap:5px;background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;border-radius:20px;padding:4px 11px;font-size:11px;font-weight:600}
+  .last-updated{font-size:11px;color:#bbb}
+  .stats{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+  .stat-card{background:#fff;border-radius:10px;padding:12px 16px;flex:1;min-width:100px;border:1px solid #e8e8e8}
+  .stat-label{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#bbb;font-weight:600;margin-bottom:4px}
+  .stat-value{font-size:26px;font-weight:700;color:#111;line-height:1}
+  .stat-card.alto .stat-value{color:#16a34a}.stat-card.medio .stat-value{color:#d97706}.stat-card.bajo .stat-value{color:#dc2626}.stat-card.tf .stat-value{color:#7c3aed}
+  .controls{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .filter-label{font-size:11px;color:#bbb}
+  .filter-btn{border:1px solid #e0e0e0;background:#fff;border-radius:20px;padding:4px 12px;font-size:11px;cursor:pointer;font-weight:500;color:#666;transition:all .15s}
+  .filter-btn:hover{border-color:#999}.filter-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+  .spacer{flex:1}
+  .btn-export{display:inline-flex;align-items:center;gap:5px;background:#fff;color:#555;border:1px solid #e0e0e0;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:500;cursor:pointer}
+  .table-wrapper{background:#fff;border-radius:12px;border:1px solid #e8e8e8;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:12px;min-width:1200px}
+  thead tr{background:#fafafa;border-bottom:2px solid #e8e8e8}
+  th{padding:10px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#aaa;white-space:nowrap}
+  td{padding:14px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top;line-height:1.45}
+  tr:last-child td{border-bottom:none}tr:hover td{background:#fafafa}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+  .badge-alto{background:#dcfce7;color:#16a34a}.badge-medio{background:#fef3c7;color:#d97706}.badge-bajo{background:#fee2e2;color:#dc2626}
+  .status-select{border:1px solid #e0e0e0;border-radius:7px;padding:5px 8px;font-size:11px;font-weight:500;color:#444;background:#fff;cursor:pointer;width:100%;min-width:180px;outline:none}
+  .status-select.fase0{background:#f5f5f5;color:#888}.status-select.tf-enviado{background:#eff6ff;color:#1d4ed8}
+  .status-select.riki{background:#faf5ff;color:#7c3aed}.status-select.marta{background:#fff7ed;color:#c2410c}
+  .status-select.giorgio{background:#f0fdf4;color:#166534}.status-select.final{background:#fef9c3;color:#713f12}.status-select.descartado{background:#fff1f2;color:#be123c}
+  .candidate-name{font-weight:700;color:#111;font-size:13px}.candidate-email{font-size:10px;color:#aaa;margin-top:2px}
+  .cv-link{display:inline-flex;align-items:center;gap:3px;margin-top:5px;font-size:10px;color:#3b82f6;text-decoration:none;font-weight:500}
+  .cv-link:hover{text-decoration:underline}
+  .role-title{font-weight:600}.role-company{font-size:10px;color:#999;margin-top:1px}.role-years{font-size:10px;color:#666;margin-top:3px;background:#f5f5f5;display:inline-block;padding:1px 6px;border-radius:4px}
+  .encaje-item{margin-bottom:3px;font-size:11px;display:flex;gap:5px;line-height:1.4}.encaje-item::before{content:'·';flex-shrink:0;font-weight:700}
+  .col-pros .encaje-item{color:#166534}.col-pros .encaje-item::before{color:#16a34a}.col-cons .encaje-item{color:#9f1239}.col-cons .encaje-item::before{color:#dc2626}
+  .tf-pendiente{color:#ddd;font-size:11px;font-style:italic}.tf-ok{color:#16a34a;font-size:11px;font-weight:600}.pending{color:#ddd;font-size:11px}
+  .notes-input{width:100%;border:1px solid transparent;border-radius:6px;padding:5px 7px;font-size:11px;color:#666;background:transparent;resize:vertical;min-height:36px;font-family:inherit;line-height:1.4}
+  .notes-input:hover{border-color:#e0e0e0;background:#fafafa}.notes-input:focus{outline:none;border-color:#999;background:#fff}.notes-input::placeholder{color:#ddd}
+  .footer-notes{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+  .info-box{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:11px;color:#92400e;display:flex;align-items:flex-start;gap:8px}
+  .info-box.blue{background:#eff6ff;border-color:#bfdbfe;color:#1e40af}
+  .empty-row td{text-align:center;color:#ccc;padding:50px;font-style:italic;font-size:14px}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-left"><h1>Candidatos Brand Manager Italia</h1><p>Elha · Proceso activo · Objetivo: cierre antes de septiembre 2026</p></div>
+  <div class="header-right"><span class="badge-tf">Typeform conectado</span><span class="last-updated" id="lastUpdated">Actualizado: 29/07/2026</span></div>
+</div>
+<div class="stats">
+  <div class="stat-card"><div class="stat-label">Total</div><div class="stat-value" id="statTotal">0</div></div>
+  <div class="stat-card alto"><div class="stat-label">Alto</div><div class="stat-value" id="statAlto">0</div></div>
+  <div class="stat-card medio"><div class="stat-label">Medio</div><div class="stat-value" id="statMedio">0</div></div>
+  <div class="stat-card bajo"><div class="stat-label">Bajo</div><div class="stat-value" id="statBajo">0</div></div>
+  <div class="stat-card tf"><div class="stat-label">TF Completado</div><div class="stat-value" id="statTF">0</div></div>
+</div>
+<div class="controls">
+  <span class="filter-label">Filtrar:</span>
+  <button class="filter-btn active" onclick="filterBy('todos',this)">Todos</button>
+  <button class="filter-btn" onclick="filterBy('Alto',this)">Alto</button>
+  <button class="filter-btn" onclick="filterBy('Medio',this)">Medio</button>
+  <button class="filter-btn" onclick="filterBy('Bajo',this)">Bajo</button>
+  <button class="filter-btn" onclick="filterBy('tf-pendiente',this)">TF Pendiente</button>
+  <button class="filter-btn" onclick="filterBy('tf-ok',this)">TF Completado</button>
+  <div class="spacer"></div>
+  <button class="btn-export" onclick="exportCSV()">Exportar CSV</button>
+</div>
+<div class="table-wrapper">
+  <table>
+    <thead><tr><th>Candidato</th><th>Interes</th><th>Rol actual</th><th>Por que encaja</th><th>Riesgos</th><th>Estado TF</th><th>Salario</th><th>Disponibilidad</th><th>Respuestas TF</th><th>Fase</th><th>Notas</th></tr></thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+</div>
+<div class="footer-notes">
+  <div class="info-box">Test interno: 1 respuesta TF de Giorgio Radice (elhalaser.com) no mostrado.</div>
+  <div class="info-box blue">Fase y notas se guardan en tu navegador. Para actualizar, pide a Claude.</div>
+</div>
+<script>
+var candidates=[{id:"simone-panzeri",nombre:"Simone Panzeri",email:"simone.panzeri87@hotmail.it",cvPath:"Inter%C3%A9s%20Alto/Simone%20Panzeri%20-%20CV%20-%20EN.pdf",interes:"Alto",rolActual:"Head of Marketing",empresa:"Beefbar / Giraudi Group",anosExp:"13+ anos",encajePros:["Nativo italiano, basado en Milan","13 anos en brand strategy, PR, influencer marketing","Agencias WPP/Publicis, sectores luxury, fashion, beauty","Espanol fluido (DELE certificado)","Experiencia influencers/UGC, social media","Conocimiento mercado italiano"],encajeCons:["Sobrequalificado (13 anos vs 3-4+ requeridos)","Trayectoria orientada a direccion (COO, Head)","No menciona uso de IA","Puede esperar mas autonomia"],tfEstado:"Pendiente",salario:null,disponibilidad:null,tfRespuestas:null}];
+var statusOptions=[{value:"fase0",label:"Fase 0 - Filtro por formulario",cls:"fase0"},{value:"tf-enviado",label:"Formulario enviado",cls:"tf-enviado"},{value:"tf-pendiente-fill",label:"Pendiente de rellenar formulario",cls:"fase0"},{value:"entrevista-riki",label:"Pendiente Entrevista Riki",cls:"riki"},{value:"entrevista-marta",label:"Pendiente Entrevista Marta",cls:"marta"},{value:"entrevista-giorgio",label:"Pendiente Entrevista Giorgio",cls:"giorgio"},{value:"decision-final",label:"Pendiente Decision Final",cls:"final"},{value:"descartado",label:"Descartado",cls:"descartado"}];
+var activeFilter="todos";
+function loadState(){try{return JSON.parse(localStorage.getItem("elha_tracker")||"{}")}catch(e){return{}}}
+function saveState(id,field,value){var s=loadState();if(!s[id])s[id]={};s[id][field]=value;localStorage.setItem("elha_tracker",JSON.stringify(s))}
+function getState(id,field,def){var s=loadState();return(s[id]&&s[id][field]!==undefined)?s[id][field]:def}
+function renderTable(){
+  var tbody=document.getElementById("tableBody");
+  var filtered=candidates.filter(function(c){if(activeFilter==="todos")return true;if(activeFilter==="tf-pendiente")return c.tfEstado==="Pendiente";if(activeFilter==="tf-ok")return c.tfEstado==="Completado";return c.interes===activeFilter;});
+  if(!filtered.length){tbody.innerHTML="<tr class='empty-row'><td colspan='11'>Sin resultados</td></tr>";updateStats();return;}
+  tbody.innerHTML=filtered.map(function(c){
+    var bc=c.interes==="Alto"?"badge-alto":c.interes==="Medio"?"badge-medio":"badge-bajo";
+    var pros=c.encajePros.map(function(p){return"<div class='encaje-item'>"+p+"</div>"}).join("");
+    var cons=c.encajeCons.map(function(p){return"<div class='encaje-item'>"+p+"</div>"}).join("");
+    var tfClass=c.tfEstado==="Completado"?"tf-ok":"tf-pendiente";
+    var tfText=c.tfEstado==="Completado"?"Completado":"Pendiente";
+    var ss=getState(c.id,"status","fase0");
+    var sn=getState(c.id,"notes","");
+    var scls=(statusOptions.find(function(s){return s.value===ss})||statusOptions[0]).cls;
+    var opts=statusOptions.map(function(s){return"<option value='"+s.value+"'"+(ss===s.value?" selected":"")+">"+s.label+"</option>"}).join("");
+    return"<tr><td><div class='candidate-name'>"+c.nombre+"</div><div class='candidate-email'>"+c.email+"</div><a class='cv-link' href='"+c.cvPath+"' target='_blank'>Ver CV</a></td><td><span class='badge "+bc+"'>"+c.interes+"</span></td><td><div class='role-title'>"+c.rolActual+"</div><div class='role-company'>"+c.empresa+"</div><span class='role-years'>"+c.anosExp+"</span></td><td class='col-pros'>"+pros+"</td><td class='col-cons'>"+cons+"</td><td><span class='"+tfClass+"'>"+tfText+"</span></td><td class='pending'>"+(c.salario||"—")+"</td><td class='pending'>"+(c.disponibilidad||"—")+"</td><td class='pending'>"+(c.tfRespuestas||"—")+"</td><td><select class='status-select "+scls+"' onchange='onSC(""+c.id+"",this)'>"+opts+"</select></td><td><textarea class='notes-input' rows='2' placeholder='Notas' onchange='saveState(""+c.id+"","notes",this.value)'>"+sn+"</textarea></td></tr>";
+  }).join("");
+  updateStats();
+}
+function onSC(id,sel){saveState(id,"status",sel.value);var opt=statusOptions.find(function(s){return s.value===sel.value})||statusOptions[0];sel.className="status-select "+opt.cls;}
+function updateStats(){document.getElementById("statTotal").textContent=candidates.length;document.getElementById("statAlto").textContent=candidates.filter(function(c){return c.interes==="Alto"}).length;document.getElementById("statMedio").textContent=candidates.filter(function(c){return c.interes==="Medio"}).length;document.getElementById("statBajo").textContent=candidates.filter(function(c){return c.interes==="Bajo"}).length;document.getElementById("statTF").textContent=candidates.filter(function(c){return c.tfEstado==="Completado"}).length;}
+function filterBy(type,btn){activeFilter=type;document.querySelectorAll(".filter-btn").forEach(function(b){b.classList.remove("active")});btn.classList.add("active");renderTable();}
+function exportCSV(){var state=loadState();var h=["Nombre","Email","Interes","Rol","Empresa","Exp","TF","Salario","Disponibilidad","Fase","Notas"];var rows=candidates.map(function(c){var s=state[c.id]||{};var fase=(statusOptions.find(function(o){return o.value===(s.status||"fase0")})||statusOptions[0]).label;return[c.nombre,c.email,c.interes,c.rolActual,c.empresa,c.anosExp,c.tfEstado,c.salario||"",c.disponibilidad||"",fase,(s.notes||"").replace(/
+/g," ")].map(function(v){return'"'+String(v).replace(/"/g,'""')+'"'}).join(",");});var blob=new Blob(["﻿"+[h.join(",")].concat(rows).join("
+")],{type:"text/csv;charset=utf-8;"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="candidatos-bm-italia.csv";a.click();}
+var now=new Date();document.getElementById("lastUpdated").textContent="Actualizado: "+now.toLocaleDateString("es-ES",{day:"2-digit",month:"2-digit",year:"numeric"});
+renderTable();
+</script>
+</body>
+                                                                                                      </html>
